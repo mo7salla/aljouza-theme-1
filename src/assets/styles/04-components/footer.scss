@@ -1,21 +1,38 @@
 
+/* ==============================
+   Floating Footer Wrapper
+   Design System: Glassmorphism
+   ============================== */
 .store-footer {
-  @apply relative bg-darker text-white mt-8 sm:mt-16;
+  @apply relative text-white;
+  /* Outer spacing — floats the footer away from viewport edges */
+  margin: 2rem 1rem;
+  /* Large rounded corners — Bento Grid aesthetic */
+  border-radius: 1.5rem; /* rounded-3xl */
+  overflow: hidden;
+  /* Glass depth */
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 8px 30px rgb(0 0 0 / 0.04);
 
   a{
     @apply transition-opacity hover:opacity-75;
   }
 
   &__inner{
-    @apply bg-dark py-8 lg:py-16 border-b border-dashed border-b-white/10;
-  }  
+    @apply py-8 lg:py-16 border-b border-dashed border-b-white/10;
+    /* Inner background inherits glass wrapper — no solid fill needed */
+    background: transparent;
+  }
 
   h3{
     @apply text-lg font-bold mb-3 lg:mb-5;
   }
 
   .social-link {
-    @apply border rounded-full w-8 h-8 justify-center flex items-center hover:opacity-75 transition duration-300 text-sm
+    @apply border rounded-full w-8 h-8 justify-center flex items-center hover:opacity-75 transition duration-300 text-sm;
   }
 
   .contact-social{
@@ -26,11 +43,14 @@
     }
   }
 
+  /* Light mode variant */
   .footer-is-light & {
-    @apply bg-gray-50 text-gray-700;
+    @apply text-gray-700;
+    background: rgba(249, 250, 251, 0.80); /* bg-gray-50 at 80% */
+    border-color: rgba(0, 0, 0, 0.08);
 
     .store-footer__inner {
-      @apply bg-gray-100 border-b-gray-200;
+      border-bottom-color: rgba(0, 0, 0, 0.10);
     }
 
     .social-link {
